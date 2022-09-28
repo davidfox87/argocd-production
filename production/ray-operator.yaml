@@ -10,7 +10,7 @@ spec:
   source:
     path: helm-chart/kuberay-operator
     repoURL: https://github.com/ray-project/kuberay.git
-    targetRevision: kuberay-operator-chart-latest
+    targetRevision: HEAD
   destination:
     namespace: ray-system
     server: https://kubernetes.default.svc
