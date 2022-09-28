@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo
-  namespace: argo
+  name: argo-events
+  namespace: argo-events
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
-    path: charts/argo-workflows
+    path: charts/argo-events
     repoURL: https://github.com/argoproj/argo-helm.git
     targetRevision: HEAD
   destination:
-    namespace: argo
+    namespace: argo-events
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
