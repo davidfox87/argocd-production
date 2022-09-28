@@ -11,9 +11,7 @@ spec:
     path: manifests/charts/base
     repoURL: https://github.com/istio/istio.git
     targetRevision: HEAD
-    helm:
-      values: |
-        labels: {}
+    
     directory:
       recurse: true
   destination:

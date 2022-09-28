@@ -1,21 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-ingress
+  name: istio-egress
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
-    path: manifests/charts/gateways/istio-ingress
+    path: manifests/charts/gateways/istio-egress
     repoURL: https://github.com/istio/istio.git
     targetRevision: HEAD
-    helm:
-      values: |
-        labels: {
-          istio-injection: enabled
-        }
   destination:
     namespace: istio-system
     server: https://kubernetes.default.svc
