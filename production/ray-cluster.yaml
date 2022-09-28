@@ -10,7 +10,7 @@ spec:
   source:
     path: helm-chart/ray-cluster
     repoURL: https://github.com/ray-project/kuberay.git
-    targetRevision: HEAD
+    targetRevision: ray-cluster-chart-latest
   destination:
     namespace: ray-system
     server: https://kubernetes.default.svc
