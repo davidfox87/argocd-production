@@ -1,22 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ray-cluster
+  name: production
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
-    path: tree/master/helm-chart/ray-cluster
-    repoURL: https://github.com/ray-project/kuberay.git
+    repoURL: https://github.com/davidfox87/argocd-production
     targetRevision: HEAD
+    path: production
   destination:
-    namespace: ray-system
     server: https://kubernetes.default.svc
+    namespace: production
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
-    syncOptions:
-    - CreateNamespace=true
