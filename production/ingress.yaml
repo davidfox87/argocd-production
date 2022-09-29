@@ -1,23 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-resources
+  name: argo-combined-app
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
-    path: manifests/charts/base
-    repoURL: https://github.com/istio/istio.git
+    path: helm/alb-istio-tls/AlbIstioTls/
+    repoURL: https://github.com/davidfox87/task-tracker-app-config
     targetRevision: HEAD
-    
-    directory:
-      recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: istio-system
+    namespace: production
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
+    syncOptions:
+    - CreateNamespace=true
