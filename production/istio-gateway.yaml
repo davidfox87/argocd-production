@@ -8,7 +8,7 @@ metadata:
 spec:
   project: production
   source:
-    path: manifests/charts/gateway
+    path: manifests/charts/gateways/istio-ingress/
     repoURL: https://github.com/istio/istio.git
     targetRevision: HEAD
     helm:
