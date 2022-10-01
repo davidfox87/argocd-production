@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-combined-app
+  name: istio-egress
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
-    path: applications/task-tracker-app/overlays/production
-    repoURL: https://github.com/davidfox87/terraform-eks.git
+    path: manifests/charts/gateways/istio-egress
+    repoURL: https://github.com/istio/istio.git
     targetRevision: HEAD
   destination:
+    namespace: istio-system
     server: https://kubernetes.default.svc
-    namespace: myapp
   syncPolicy:
     automated:
       selfHeal: true

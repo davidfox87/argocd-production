@@ -1,22 +1,33 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-combined-app
+  name: argo-workflows
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
-    path: applications/task-tracker-app/overlays/production
-    repoURL: https://github.com/davidfox87/terraform-eks.git
+    path: charts/argo-workflows
+    repoURL: https://github.com/argoproj/argo-helm.git
     targetRevision: HEAD
+    helm:
+      values: |
+        server: 
+          ingress:
+            hosts:
+              - acme.com
+            enabled: true
+            ingressClassName: nginx
+        controller:
+          containerRuntimeExecutor: emissary
   destination:
+    namespace: argo
     server: https://kubernetes.default.svc
-    namespace: myapp
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
     syncOptions:
     - CreateNamespace=true
+

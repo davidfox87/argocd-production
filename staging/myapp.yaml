@@ -8,7 +8,7 @@ metadata:
 spec:
   project: production
   source:
-    path: applications/task-tracker-app/overlays/production
+    path: applications/task-tracker-app/base
     repoURL: https://github.com/davidfox87/terraform-eks.git
     targetRevision: HEAD
   destination:

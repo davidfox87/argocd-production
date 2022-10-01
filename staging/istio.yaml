@@ -1,22 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-combined-app
+  name: istio
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: production
+  project: staging
   source:
-    path: helm/alb-istio-tls/AlbIstioTls/
-    repoURL: https://github.com/davidfox87/task-tracker-app-config
+    path: manifests/charts/istio-control/istio-discovery
+    repoURL: https://github.com/istio/istio.git
     targetRevision: HEAD
   destination:
+    namespace: istio-system
     server: https://kubernetes.default.svc
-    namespace: production
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
     syncOptions:
     - CreateNamespace=true
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
+    jsonPointers:
+    - /webhooks
