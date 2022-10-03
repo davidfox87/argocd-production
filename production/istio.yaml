@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-egress
+  name: istio
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: staging
+  project: production
   source:
-    path: manifests/charts/gateways/istio-egress
+    path: manifests/charts/istio-control/istio-discovery
     repoURL: https://github.com/istio/istio.git
     targetRevision: HEAD
   destination:
@@ -20,3 +20,8 @@ spec:
       prune: true
     syncOptions:
     - CreateNamespace=true
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
+    jsonPointers:
+    - /webhooks

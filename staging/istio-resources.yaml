@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: production
+  project: staging
   source:
     path: manifests/charts/base
     repoURL: https://github.com/istio/istio.git
