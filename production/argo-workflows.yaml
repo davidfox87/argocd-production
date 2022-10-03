@@ -16,7 +16,7 @@ spec:
         server: 
           ingress:
             hosts:
-              - test.com
+              - "*.amazonaws.com"
             enabled: true
             annotations: {
                 "kubernetes.io/ingress.class": "alb",
