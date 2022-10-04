@@ -12,8 +12,6 @@ spec:
     repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
     targetRevision: HEAD
 
-    kustomize:
-      version: v3.5.4
   destination:
     server: https://kubernetes.default.svc
     namespace: staging
