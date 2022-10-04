@@ -16,7 +16,7 @@ spec:
         server: 
           ingress:
             hosts:
-              - "*.amazonaws.com"
+              - "argo.mlops-playground.com"
             enabled: true
             annotations: {
                 "kubernetes.io/ingress.class": "alb",
