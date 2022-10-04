@@ -10,7 +10,7 @@ spec:
   source:
     path: manifests/charts/istio-control/istio-discovery
     repoURL: https://github.com/istio/istio.git
-    targetRevision: 1.15.1
+    targetRevision: release-1.14
   destination:
     namespace: istio-system
     server: https://kubernetes.default.svc
