@@ -8,9 +8,9 @@ metadata:
 spec:
   project: staging
   source:
-    chart: base
-    repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.15.1
+    path: manifests/charts/base
+    repoURL: https://github.com/istio/istio.git
+    targetRevision: HEAD
   destination:
     namespace: istio-system
     server: https://kubernetes.default.svc
