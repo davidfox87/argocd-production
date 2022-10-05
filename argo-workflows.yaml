@@ -18,7 +18,6 @@ spec:
             hosts:
               - test.com
             enabled: true
-            ingressClassName: nginx
   destination:
     namespace: argo
     server: https://kubernetes.default.svc
