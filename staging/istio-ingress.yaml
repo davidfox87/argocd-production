@@ -10,7 +10,7 @@ spec:
   source:
     path: manifests/charts/gateways/istio-ingress
     repoURL: https://github.com/istio/istio.git
-    targetRevision: HEAD
+    targetRevision: 1.15.1
     helm:
       values: |
         gateways:

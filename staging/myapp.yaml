@@ -8,7 +8,7 @@ metadata:
 spec:
   project: staging
   source:
-    path: applications/task-tracker-app/overlays/staging
+    path: applications/task-tracker-app/overlays/staging/
     repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
     targetRevision: HEAD
 

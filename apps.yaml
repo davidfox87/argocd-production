@@ -8,7 +8,7 @@ metadata:
 spec:
   project: staging
   source:
-    repoURL: https://github.com/davidfox87/argocd-production
+    repoURL: https://github.com/davidfox87/argocd-production.git
     targetRevision: HEAD
     path: staging
   destination:
