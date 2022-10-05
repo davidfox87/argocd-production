@@ -8,8 +8,8 @@ metadata:
 spec:
   project: staging
   source:
-    path: manifests/charts/gateways/istio-ingress
-    repoURL: https://github.com/istio/istio.git
+    chart: istio/gateway
+    repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.15.1
     helm:
       values: |
