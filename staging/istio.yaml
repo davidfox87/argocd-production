@@ -8,8 +8,8 @@ metadata:
 spec:
   project: staging
   source:
-    chart: istio/istiod
-    repoURL: https://istio-release.storage.googleapis.com/charts
+    chart: istiod
+    repoURL: https://istio-release.storage.googleapis.com/charts/istio
     targetRevision: 1.15.1
   destination:
     namespace: istio-system
