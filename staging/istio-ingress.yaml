@@ -9,7 +9,7 @@ spec:
   project: staging
   source:
     chart: gateway
-    repoURL: https://istio-release.storage.googleapis.com/charts/istio
+    repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.15.1
     helm:
       values: |
