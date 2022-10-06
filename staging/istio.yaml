@@ -11,7 +11,6 @@ spec:
     path: manifests/charts/base/
     repoURL: https://github.com/istio/istio.git
     targetRevision: 1.15.1
-    chart: istio/istiod
   destination:
     namespace: istio-system
     server: 'https://kubernetes.default.svc'
