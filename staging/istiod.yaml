@@ -11,6 +11,8 @@ spec:
     repoURL: 'https://github.com/istio/istio.git'
     path: manifests/charts/istio-control/istio-discovery
     targetRevision: HEAD
+    helm:
+      skipCrds: true
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system
