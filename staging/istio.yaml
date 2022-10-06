@@ -9,7 +9,7 @@ spec:
   project: staging
   source:
     path: istio/manifests/charts/base/
-    repoURL: http://github.com/istio/istio.git
+    repoURL: https://github.com/istio/istio.git
     targetRevision: 1.15.1
     chart: istio/istiod
   destination:
