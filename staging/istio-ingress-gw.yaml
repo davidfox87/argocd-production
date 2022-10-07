@@ -21,7 +21,7 @@ spec:
       values: |-
         gateways:
           istio-ingressgateway:
-            serviceAnnotations: {alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready, alb.ingress.kubernetes.io/healthcheck-port: "30218"}
+            serviceAnnotations: {alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready, alb.ingress.kubernetes.io/healthcheck-port: "30626"}
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system
