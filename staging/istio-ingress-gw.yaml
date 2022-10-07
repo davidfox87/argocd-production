@@ -12,15 +12,16 @@ spec:
     path: manifests/charts/gateways/istio-ingress
     targetRevision: HEAD
     helm:
-    parameters:
-    - name: gateways.istio-ingressgateway.type
-      value: NodePort
-    - name: gateways.istio-ingressgateway.externalTrafficPolicy
-      value: Cluster
-    values: |-
-      gateways:
-        istio-ingressgateway:
-          serviceAnnotations: {alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready, alb.ingress.kubernetes.io/healthcheck-port: "30218"}
+      parameters:
+      - name: gateways.istio-ingressgateway.type
+        value: NodePort
+      - name: gateways.istio-ingressgateway.externalTrafficPolicy
+        value: Cluster
+        
+      values: |-
+        gateways:
+          istio-ingressgateway:
+            serviceAnnotations: {alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready, alb.ingress.kubernetes.io/healthcheck-port: "30218"}
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system
