@@ -13,10 +13,10 @@ spec:
     targetRevision: HEAD
     helm:
     parameters:
-      - name: gateways.istio-ingressgateway.type
-        value: NodePort
-      - name: gateways.istio-ingressgateway.externalTrafficPolicy
-        value: Cluster
+    - name: gateways.istio-ingressgateway.type
+      value: NodePort
+    - name: gateways.istio-ingressgateway.externalTrafficPolicy
+      value: Cluster
     values: |-
       gateways:
         istio-ingressgateway:
