@@ -15,8 +15,6 @@ spec:
       parameters:
       - name: gateways.istio-ingressgateway.type
         value: NodePort
-      - name: gateways.istio-ingressgateway.externalTrafficPolicy
-        value: Cluster
         
       values: |-
         gateways:
