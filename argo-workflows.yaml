@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-workflows
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: staging
+  source:
+    path: charts/argo-workflows
+    repoURL: https://github.com/argoproj/argo-helm.git
+    targetRevision: HEAD
+    helm:
+      values: |-
+        server: 
+          ingress:
+            hosts:
+              - argoworkflows.mlops-playground.com
+            enabled: true
+            annotations: {kubernetes.io/ingress.class: alb, 
+                          alb.ingress.kubernetes.io/scheme: internet-facing,
+                          }
+  destination:
+    namespace: argo
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
