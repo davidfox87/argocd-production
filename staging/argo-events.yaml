@@ -1,25 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istiod
+  name: argo-combined-app
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: staging
   source:
-    repoURL: 'https://github.com/istio/istio.git'
-    path: manifests/charts/istio-control/istio-discovery
+    path: applications/argo-events/overlays/production
+    repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
     targetRevision: HEAD
-    helm:
-      skipCrds: true
+
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: istio-system
+    server: https://kubernetes.default.svc
+    namespace: argo-events
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
-
-
-
+    syncOptions:
+    - CreateNamespace=true
