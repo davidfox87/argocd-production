@@ -1,19 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-workflows-resources
+  name: minio
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: staging
   source:
-    path: applications/argo-workflows/overlays/staging
+    path: applications/minio/overlays/standard
     repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
     targetRevision: HEAD
+
   destination:
-    namespace: argo
     server: https://kubernetes.default.svc
+    namespace: default
   syncPolicy:
     automated:
       selfHeal: true
