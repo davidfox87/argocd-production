@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: seldon-core-operator
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: staging
   source:
@@ -26,9 +24,15 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: seldon-system
   syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
     syncOptions:
-    - CreateNamespace=true
-
+      - CreateNamespace=true
+      - Replace=true
+      - Validate=false
+  ignoreDifferences:
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: seldondeployments.machinelearning.seldon.io
+      jsonPointers:
+        - /spec
+        - /status
+        - /metadata/labels
