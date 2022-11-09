@@ -56,7 +56,7 @@ metadata:
 spec:
   project: staging
   source:
-    path: infra/crossplane/resources
+    path: infra/crossplane/crossplane-resources
     repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
     targetRevision: HEAD
   destination:
