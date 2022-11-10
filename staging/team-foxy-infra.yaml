@@ -8,7 +8,7 @@ metadata:
 spec:
   project: staging
   source:
-    path: infra/crossplane/crossplane-providers
+    path: infra/crossplane/team-foxy
     repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
     targetRevision: HEAD
   destination:
