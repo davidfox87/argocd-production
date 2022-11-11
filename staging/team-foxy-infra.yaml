@@ -3,6 +3,7 @@ kind: Application
 metadata:
   name: team-foxy-infra
   namespace: argocd
+  labels:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
