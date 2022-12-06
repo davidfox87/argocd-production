@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: seldon-core-operator
+  namespace: argocd
+spec:
+  project: staging
+  source:
+    chart: seldon-core-operator
+    repoURL: 'https://storage.googleapis.com/seldon-charts'
+    targetRevision: 1.14.1
+    helm:
+      parameters:
+        - name: istio.enabled
+          value: 'true'
+        - name: usageMetrics.enabled
+          value: 'true'
+      values: |-
+        istio:
+          enabled: true
+        usageMetrics:
+          enabled: true
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: seldon-system
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+      - Validate=false
+  ignoreDifferences:
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: seldondeployments.machinelearning.seldon.io
+      jsonPointers:
+        - /spec
+        - /status
+        - /metadata/labels
