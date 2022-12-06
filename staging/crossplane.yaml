@@ -34,7 +34,7 @@ spec:
   project: staging
   source:
     path: infra/crossplane/crossplane-config
-    repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
+    repoURL: https://github.com/davidfox87/crossplane-eks-argocd-mlops.git
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
@@ -44,49 +44,3 @@ spec:
       prune: true
       allowEmpty: true
 
----
-
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: crossplane-compositions
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  project: staging
-  source:
-    path: infra/crossplane/crossplane-compositions/cluster
-    repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
-    targetRevision: HEAD
-  destination:
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
-      allowEmpty: true
-
----
-
-
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: crossplane-providers
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  project: staging
-  source:
-    path: infra/crossplane/crossplane-providers
-    repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
-    targetRevision: HEAD
-  destination:
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
-      allowEmpty: true
