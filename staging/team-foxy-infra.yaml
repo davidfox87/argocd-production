@@ -10,7 +10,7 @@ spec:
   project: staging
   source:
     path: infra/crossplane/team-foxy
-    repoURL: https://github.com/davidfox87/terraform-eks-acm-alb-istio.git
+    repoURL: https://github.com/davidfox87/crossplane-eks-argocd-mlops.git
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
